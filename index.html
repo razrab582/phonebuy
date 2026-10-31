@@ -1,0 +1,112 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0a84ff"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>PhoneBuy</title>
+<style>
+:root{--bg:#e9ecf1;--c:#fff;--ink:#1a2233;--mut:#667085;--ac:#0a84ff;--or:#ff8a1f;--g:#0b7a4b;--r:#c0392b}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font:16px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;font-variant-numeric:tabular-nums}
+header{background:var(--ac);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 16px 12px;display:flex;justify-content:space-between;align-items:center}
+header h1{font-size:20px;font-weight:800;letter-spacing:-.02em}header h1 i{font-style:normal;color:var(--or)}
+.bal{background:#ffffff30;border-radius:20px;padding:6px 12px;font-weight:700;font-size:15px}
+main{flex:1;overflow:auto;padding:12px 12px calc(96px + env(safe-area-inset-bottom))}
+.cd{display:flex;gap:12px;background:var(--c);border-radius:18px;padding:12px;margin-bottom:12px}
+.ph{flex:none;width:72px;height:128px;border-radius:16px;background:linear-gradient(160deg,var(--c1),#0006);position:relative;box-shadow:inset 0 0 0 3px #0003}
+.ph:after{content:"";position:absolute;inset:6px;border-radius:11px;background:#0b1220;opacity:.85}
+.ph:before{content:"";position:absolute;top:10px;left:50%;width:18px;height:4px;margin-left:-9px;border-radius:3px;background:#fff3;z-index:1}
+.in{flex:1;min-width:0}.in b{display:block;font-size:17px}
+.pr{color:var(--g);font-size:22px;font-weight:800;margin:2px 0 6px}
+.ch span{display:inline-block;background:#eef1f5;border-radius:12px;padding:2px 9px;margin:0 4px 4px 0;font-size:13px}
+.sl{color:var(--mut);font-size:13px}.fl{color:var(--r);font-size:13px;font-weight:600;margin-top:4px}
+.ins{background:#fff4ec;border-radius:10px;padding:6px 9px;margin-top:6px;font-size:13px}
+.bt{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;font-size:14px;border:2px solid var(--ink);background:none;color:var(--ink);border-radius:12px;padding:8px 12px}
+button.p{background:var(--ac);border-color:var(--ac);color:#fff}button:active{transform:scale(.97)}button:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--c);display:flex;justify-content:space-around;align-items:flex-end;padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -2px 14px #1a22331f}
+nav a{flex:1;text-align:center;font-size:12px;color:var(--mut);padding:4px 0;font-weight:600}nav a b{display:block;font-size:22px}nav a.on{color:var(--ac)}
+.fab{flex:none;width:66px;height:66px;margin:-30px 6px 0;border-radius:50%;background:var(--ac);color:#fff;font-size:12px;border:4px solid var(--bg);padding:0;line-height:1.1}.fab b{display:block;font-size:24px}
+.box{background:var(--c);border-radius:18px;padding:14px;margin-bottom:12px}.box h2{font-size:18px;margin-bottom:6px}
+.empty{text-align:center;color:var(--mut);padding:40px 20px}
+.row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #eef1f5}.row:last-child{border:0}
+#toast{position:fixed;left:16px;right:16px;top:calc(70px + env(safe-area-inset-top));background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:5}#toast.on{opacity:1}
+#md{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;z-index:6;padding:20px}#md.on{display:flex}
+#md div{background:var(--c);border-radius:18px;padding:18px;width:100%;max-width:340px}#md input{width:100%;font:inherit;font-size:22px;font-weight:700;border:2px solid var(--ink);border-radius:12px;padding:10px;margin:10px 0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.nw{background:#e8f1ff;color:#1c4fa0;border-radius:14px;padding:10px 12px;margin-bottom:12px;font-size:14px;font-weight:600}.dm{font-size:13px;font-weight:700;margin-top:4px}.hi{color:var(--g)}.mid{color:#b7791f}.lo{color:var(--r)}.vw{color:var(--mut);font-size:13px}header small{display:block;font-size:12px;font-weight:500;color:#9fb0cc;letter-spacing:0}.box button{margin:4px 6px 0 0}.dbt{color:var(--r)}
+header h1{background:#fff;color:var(--ac);border-radius:22px;padding:3px 14px}.cty{border:2px solid #fff6;border-radius:20px;padding:5px 11px;font-weight:700;font-size:14px}
+.cd{display:block;padding:0;overflow:hidden;position:relative}.ph{width:100%;height:150px;border-radius:0;box-shadow:none}
+.ph:after{inset:auto;top:14px;left:50%;width:68px;height:122px;margin-left:-34px;border-radius:14px;border:3px solid #fff5}.ph:before{top:24px}.in{padding:12px 14px 14px}
+.bk{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:#fffe;padding:0;font-size:20px;color:var(--ac)}
+.sel{display:flex;align-items:center;gap:10px;border-top:1px solid #eef1f5;margin-top:8px;padding-top:8px}.sel>div{flex:1}.sel i{width:36px;height:36px;border-radius:50%;background:#dbeafe;color:var(--ac);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:800}.sel b{font-size:15px}
+.sb{display:flex;gap:8px;margin-bottom:10px}.sb input{flex:1;min-width:0;font:inherit;border:0;border-radius:14px;padding:11px 14px;background:var(--c)}.chs{margin-bottom:12px}
+nav a{position:relative}nav u{position:absolute;top:-2px;left:calc(50% + 6px);background:var(--r);color:#fff;font-size:11px;border-radius:9px;padding:0 5px;text-decoration:none;font-style:normal}
+</style></head><body>
+<header><h1>Phone<i>Buy</i></h1><span class="cty" id="dy"></span><div class="bal" id="bal"></div></header>
+<main id="m"></main>
+<nav id="nv"></nav><div id="toast"></div><div id="md"><div><b id="mt"></b><input id="mi" type="number" inputmode="numeric"><button class="p" id="mo">Готово</button> <button id="mc">Отмена</button></div></div>
+<script>
+const $=s=>document.querySelector(s),rnd=(a,b)=>a+Math.random()*(b-a),pick=a=>a[Math.random()*a.length|0],R=n=>Math.round(n/100)*100,cl=(v,a,b)=>Math.min(b,Math.max(a,v));
+const fm=n=>Math.round(n).toLocaleString("ru-RU")+" ₽";
+const M=[["iPhone 11, 64 ГБ",0,18000],["iPhone 12, 128 ГБ",0,28000],["iPhone 13, 128 ГБ",0,38000],["iPhone 14 Pro, 256 ГБ",0,70000],["iPhone 15, 128 ГБ",0,60000],["Galaxy S21, 128 ГБ",1,22000],["Galaxy S22, 128 ГБ",1,30000],["Galaxy A54, 128 ГБ",1,20000],["Redmi Note 12, 128 ГБ",2,12000],["Poco X5 Pro, 256 ГБ",2,17000],["Xiaomi 13, 256 ГБ",2,35000],["Pixel 7, 128 ГБ",3,28000]];
+const BC=["#8f9bb0","#2f4f94","#e8743b","#3f9a6c"];
+const CN=[["Как новый",1],["Хорошее",.88],["Есть царапины",.75],["Битый экран",.55],["Не включается",.35]];
+const T=[{a:1.1,m:.88,f:""},{a:.88,m:.85,f:"Срочно, нужны деньги"},{a:1.25,m:.95,f:"Торг неуместен"},{a:.85,m:1,f:"Только предоплата, осмотр не дам"}];
+const NM=["Иван","Ольга","Макс","Дима","Света","Артём","Катя","Паша","Лена","Рома"],CT=["Смоленск","Москва","Тверь","Воронеж","Казань","Омск"];
+const EV=[["Вышла новая линейка: старые модели дешевеют",-.04],["Курс подскочил: телефоны дорожают",.05],["Начался учебный сезон: спрос растёт",.03],["Распродажа в магазинах: б/у дешевеет",-.03],["Праздники: все скупают подарки",.04]];
+let tab="feed",uid=0,S,q="",so=0,fv=0;
+const fresh=()=>({money:100000,day:1,mk:1,rate:4,feed:[],stock:[],log:[],bought:0,sold:0,profit:0,debt:0,news:"",fav:[],offers:[]});
+const save=()=>{try{localStorage.setItem("pb1",JSON.stringify(S))}catch(e){}};
+try{S=Object.assign(fresh(),JSON.parse(localStorage.getItem("pb1")))}catch(e){S=fresh()}
+const fair=p=>M[p.m][2]*CN[p.c][1]*(p.b<80?.92:1)*(p.lock?.25:1)*S.mk;
+const rt=p=>p.listed/fair(p);
+// Шанс продажи за день. Выше 1.3 от рынка шанс строго 0: никакая цена не «дождётся» покупателя.
+const chance=p=>{const r=rt(p);return r>=1.3?0:cl((r<=.9?.75:r<=1?.6:.6*(1.3-r)/.3)+(S.rate-4)*.04,0,.85)};
+const dem=p=>{const r=rt(p);return r<=1?["Высокий спрос","hi"]:r<=1.15?["Средний спрос","mid"]:r<1.3?["Низкий спрос","lo"]:["Слишком дорого: никто не купит","lo"]};
+const worth=()=>S.money-S.debt+S.stock.reduce((s,p)=>s+fair(p),0);
+function newL(){const m=Math.random()*M.length|0,c=pick([0,1,1,2,2,3,4]),t=pick([0,0,0,1,1,2,3]),cc=t==3?Math.max(0,c-2):c,ak=R(M[m][2]*CN[cc][1]*T[t].a*S.mk);
+const l={id:++uid+Date.now(),m,c,cc,t,b:Math.round(rnd(62,100)),lock:Math.random()<.07,ask:ak,min:t>=2?ak:R(ak*T[t].m*rnd(.92,1)),who:pick(NM),city:pick(CT),rate:+(t==3?rnd(3,4.2):rnd(3.6,5)).toFixed(1),seen:0,off:0,d:S.day,v:Math.round(rnd(20,500))};return l}
+const fill=()=>{while(S.feed.length<8)S.feed.push(newL())};
+const toast=t=>{const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>e.classList.remove("on"),3000)};
+const prm=(t,v,cb)=>{$("#mt").textContent=t;$("#mi").value=v;$("#md").classList.add("on");$("#mi").focus();$("#mi").select();$("#mo").onclick=()=>{const n=Math.round(+$("#mi").value);$("#md").classList.remove("on");if(n>0&&n<=1e9)cb(n);else toast("Введите сумму от 1 до 1 000 000 000 ₽.")};$("#mc").onclick=()=>$("#md").classList.remove("on")};
+const logA=t=>{S.log.unshift("День "+S.day+": "+t);S.log.length=Math.min(S.log.length,15)};
+function buy(l,v){v=Math.min(v,l.ask);if(S.money<v)return toast("Не хватает денег. Нужно "+fm(v)+".");S.money-=v;S.feed=S.feed.filter(x=>x!==l);S.stock.push({id:l.id,m:l.m,c:l.c,b:l.b,lock:l.lock,paid:v,listed:0,views:0});S.bought++;logA("куплен "+M[l.m][0]+" за "+fm(v));let w="";if(l.t==3&&l.c>l.cc)w=" Продавец наврал: состояние хуже, чем в объявлении.";if(l.lock)w+=" Телефон заблокирован аккаунтом.";toast("Куплено: "+M[l.m][0]+"."+w);save();render()}
+function sell(p,v){S.money+=v;S.sold++;const pf=v-p.paid;S.profit+=pf;if(v<=fair(p)*1.15)S.rate=Math.min(5,S.rate+.03);logA("продан "+M[p.m][0]+" за "+fm(v)+(pf>=0?", прибыль ":", убыток ")+fm(Math.abs(pf)));p.gone=1}
+function nextDay(){S.day++;S.mk=cl(S.mk*(1+rnd(-.012,.012)),.8,1.2);S.news="";
+if(Math.random()<.25){const e=pick(EV);S.mk=cl(S.mk*(1+e[1]),.8,1.2);S.news=e[0]}
+if(S.debt>0)S.debt=Math.round(S.debt*1.01);
+let n=0;S.stock.forEach(p=>{if(!p.listed)return;const r=rt(p);if(r<1.3)p.views=(p.views|0)+Math.ceil(rnd(1,12)*(1.35-r));
+if(Math.random()<chance(p)){n++;sell(p,p.listed)}});
+S.stock=S.stock.filter(p=>!p.gone);
+S.offers=S.offers.filter(o=>S.day-o.day<3&&S.stock.some(p=>p.id==o.pid&&p.listed));
+S.stock.forEach(p=>{if(p.listed&&rt(p)<1.3&&!S.offers.some(o=>o.pid==p.id)&&Math.random()<.3)S.offers.push({pid:p.id,who:pick(NM),price:Math.max(1,Math.min(p.listed,R(Math.min(p.listed,fair(p)*1.05)*rnd(.82,.97)))),day:S.day})});
+S.feed=S.feed.filter(()=>Math.random()>.3);S.fav=S.fav.filter(i=>S.feed.some(l=>l.id==i));fill();
+toast((S.news?S.news+". ":"")+"День "+S.day+": "+(n?"продано телефонов: "+n+".":S.stock.some(p=>p.listed)?"покупателей не было.":"ничего не выставлено на продажу.")+(S.offers.length?" Есть предложения в сообщениях.":""));save();render()}
+const ago=d=>{d=S.day-(d??S.day);return d<1?"сегодня":d+" дн. назад"};
+const card=l=>`<div class="cd" data-id="${l.id}"><div class="ph" style="--c1:${BC[M[l.m][1]]}"><button class="bk" data-a="f" aria-label="В избранное">${S.fav.includes(l.id)?"★":"☆"}</button></div><div class="in"><b>${M[l.m][0]}</b><div class="pr">${fm(l.ask)}</div><div class="ch"><span>${CN[l.cc][0]}</span><span>📍 ${l.city}</span>${l.v?`<span>👁 ${l.v}</span>`:""}</div>${T[l.t].f?`<div class="fl">⚠ ${T[l.t].f}</div>`:""}${l.seen?`<div class="ins">Осмотр: ${CN[l.c][0]}, батарея ${l.b}%${l.lock?", <b>заблокирован аккаунтом</b>":""}.<br>Цена на рынке ≈ ${fm(l.est||R(fair(l)))}</div>`:""}<div class="bt">${l.seen||l.t==3?"":'<button data-a="i">Осмотреть · 300 ₽</button>'}${l.t>=2?"":'<button data-a="o">Торг</button>'}<button class="p" data-a="b">Купить</button></div><div class="sel"><i>${l.who[0]}</i><div><b>${l.who}</b><div class="sl">★ ${l.rate} · частное лицо</div></div><span class="sl">${ago(l.d)}</span></div></div></div>`;
+const lst=()=>{let a=S.feed.filter(l=>(!fv||S.fav.includes(l.id))&&M[l.m][0].toLowerCase().includes(q.trim().toLowerCase()));if(so)a=[...a].sort((x,y)=>so==1?x.ask-y.ask:y.ask-x.ask);return a.length?a.map(card).join(""):`<div class="empty">Ничего не найдено. Измени поиск или нажми «День».</div>`};
+function stk(p){const d=p.listed?dem(p):0;return `<div class="cd" data-id="${p.id}"><div class="ph" style="--c1:${BC[M[p.m][1]]}"></div><div class="in"><b>${M[p.m][0]}</b><div class="sl">${CN[p.c][0]}, батарея ${p.b}%${p.lock?", заблокирован":""}</div><div class="sl">Куплен за ${fm(p.paid)} · рынок ≈ ${fm(R(fair(p)))}</div>${p.listed?`<div class="pr">${fm(p.listed)}</div><div class="dm ${d[1]}">${d[0]}</div><div class="vw">Просмотров: ${p.views|0}</div><div class="bt"><button data-a="s">Изменить цену</button><button data-a="u">Снять</button></div>`:`<div class="bt"><button class="p" data-a="s">Выставить на продажу</button></div>`}</div></div>`}
+function render(){$("#bal").textContent=fm(S.money);$("#dy").textContent="☀ День "+S.day;let h="";
+if(tab=="feed"){if(S.day==1)h+=`<div class="box"><h2>Как играть</h2>Осматривай, торгуйся и покупай ниже рынка. Потом выставляй телефон на продажу и жми «День»: придут покупатели. Дороже рынка на 30% и больше никто не купит.</div>`;if(S.news)h+=`<div class="nw">📰 ${S.news}</div>`;h+=`<div class="sb"><input id="q" placeholder="Поиск по объявлениям" value="${q}"><button data-a="so">⇅ ${["Новые","Дешевле","Дороже"][so]}</button></div><div class="chs"><button data-a="fv" class="${fv?"p":""}">★ Избранное</button></div><div id="ls">${lst()}</div>`}
+if(tab=="stock"){const a=[...S.stock].sort((x,y)=>!!y.listed-!!x.listed);h=a.length?a.map(stk).join(""):`<div class="empty">На складе пусто. Купи телефон в ленте.</div>`}
+if(tab=="msg"){h=(S.offers.length?S.offers.map(o=>{const p=S.stock.find(x=>x.id==o.pid);return `<div class="box"><div class="sel" style="border:0;margin:0;padding:0"><i>${o.who[0]}</i><div><b>${o.who}</b><div class="sl">хочет купить ${M[p.m][0]}</div></div></div><div class="pr">${fm(o.price)}</div><div class="sl">Ваша цена: ${fm(p.listed)}. Предложение действует до дня ${o.day+2}.</div><div class="bt" data-oid="${o.pid}"><button class="p" data-a="ok">Принять</button><button data-a="no">Отказать</button></div></div>`}).join(""):`<div class="empty">Предложений нет. Выставь телефон на продажу и жми «День».</div>`)+`<div class="box"><h2>Журнал</h2>${S.log.length?S.log.map(x=>`<div class="row">${x}</div>`).join(""):"Пока пусто."}</div>`}
+if(tab=="me"){const ch=Math.round((S.mk-1)*100);h=`<div class="box"><h2>Профиль продавца</h2><div class="row"><span>День</span><b>${S.day}</b></div><div class="row"><span>Рейтинг</span><b>★ ${S.rate.toFixed(1)}</b></div><div class="row"><span>Капитал (с товаром)</span><b>${fm(worth())}</b></div>${S.debt?`<div class="row"><span>Долг по кредиту</span><b class="dbt">${fm(S.debt)}</b></div>`:""}<div class="row"><span>Куплено / продано</span><b>${S.bought} / ${S.sold}</b></div><div class="row"><span>Общая прибыль</span><b>${fm(S.profit)}</b></div><div class="row"><span>Рынок к началу игры</span><b>${ch>0?"+":""}${ch} %</b></div></div><div class="box"><h2>Деньги</h2><div class="sl">Кредит даёт 50 000 ₽, но долг растёт на 1% в день. Подработка (+1 200 ₽, уходит день) доступна, когда денег меньше 20 000 ₽.</div>${S.debt?'<button data-a="r">Погасить кредит</button>':'<button data-a="l">Взять кредит 50 000 ₽</button>'}<button data-a="j">Подработка</button></div><button data-a="x">Начать заново</button>`}
+$("#m").innerHTML=h;const tabs=[["feed","📋","Объявления"],["stock","📦","Склад"],0,["msg","💬","Сообщения"],["me","👤","Профиль"]];
+$("#nv").innerHTML=tabs.map(t=>t?`<a href="#" data-t="${t[0]}" class="${tab==t[0]?"on":""}"><b>${t[1]}</b>${t[0]=="msg"&&S.offers.length?`<u>${S.offers.length}</u>`:""}${t[2]}</a>`:`<button class="fab" data-a="d"><b>☀</b>День</button>`).join("")}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-t]");if(t){e.preventDefault();tab=t.dataset.t;return render()}
+const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;if(a=="d")return nextDay();
+if(a=="x"){if(confirm("Начать игру заново? Прогресс пропадёт.")){S=fresh();fill();save();tab="feed";render()}return}
+if(a=="l"){if(S.debt)return;S.debt=50000;S.money+=50000;logA("взят кредит 50 000 ₽");save();return render()}
+if(a=="r"){const v=Math.min(S.money,S.debt);if(v<=0)return toast("Нечем платить: денег нет.");S.money-=v;S.debt-=v;logA("погашено по кредиту: "+fm(v));save();return render()}
+if(a=="j"){if(S.money>=20000)return toast("Подработка нужна, когда денег меньше 20 000 ₽.");S.money+=1200;logA("подработка: +1 200 ₽");return nextDay()}
+if(a=="so"){so=(so+1)%3;return render()}
+if(a=="fv"){fv=fv?0:1;return render()}
+if(a=="ok"||a=="no"){const oid=b.closest("[data-oid]").dataset.oid,o=S.offers.find(x=>x.pid==oid),p=S.stock.find(x=>x.id==oid);if(a=="ok"&&o&&p){sell(p,o.price);S.stock=S.stock.filter(x=>!x.gone);toast("Продано за "+fm(o.price)+".")}S.offers=S.offers.filter(x=>x!==o);save();return render()}
+const c=b.closest("[data-id]");if(!c)return;const id=c.dataset.id,l=S.feed.find(x=>x.id==id),p=S.stock.find(x=>x.id==id);
+if(a=="i"&&l){if(S.money<300)return toast("Не хватает денег на дорогу.");S.money-=300;l.seen=1;l.est=R(fair(l)*rnd(.97,1.03));save();render()}
+if(a=="b"&&l)buy(l,l.ask);
+if(a=="f"&&l){const k=S.fav.indexOf(l.id);k<0?S.fav.push(l.id):S.fav.splice(k,1);save();$("#ls").innerHTML=lst()}
+if(a=="o"&&l)prm("Ваше предложение, ₽",R(l.ask*.9),v=>{if(v>=l.min)buy(l,v);else{l.off++;if(l.off>=3){S.feed=S.feed.filter(x=>x!==l);toast("Продавец отказался и ушёл. Объявление удалено.")}else toast("Продавец: «Не пойдёт, предложи больше». Попыток осталось: "+(3-l.off)+".");save();render()}});
+if(a=="s"&&p)prm("Цена продажи, ₽",p.listed||R(fair(p)*1.1),v=>{p.listed=v;save();render();toast(rt(p)>=1.3?"Цена слишком высокая: покупателей не будет.":"Выставлено за "+fm(v)+". Жми «День», чтобы дождаться покупателей.")});
+if(a=="u"&&p){p.listed=0;save();render()}});
+document.addEventListener("input",e=>{if(e.target.id=="q"){q=e.target.value;$("#ls").innerHTML=lst()}});
+addEventListener("keydown",e=>{if($("#md").classList.contains("on")){if(e.key=="Enter")$("#mo").click();if(e.key=="Escape")$("#mc").click()}});
+fill();render();if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script></body></html>
